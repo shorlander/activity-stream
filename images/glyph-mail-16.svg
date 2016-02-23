@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="16"
+     height="16"
+     viewBox="0 0 16 16">
+  <style>
+    path {
+      fill: #4d4d4d;
+    }
+  </style>
+  
+  <path d="M9.8,8c0,0-0.6,0.8-1.8,0.8S6.2,8,6.2,8l-6-5.1C0.5,2.4,1.1,2,1.8,2h12.4c0.7,0,1.3,0.4,1.6,0.9L9.8,8z M6.2,9.7 c0,0,0.6,0.8,1.8,0.8s1.8-0.8,1.8-0.8L16,4.3v8c0,0.9-0.8,1.7-1.8,1.7H1.8c-1,0-1.8-0.8-1.8-1.7v-8L6.2,9.7z"/>
+</svg>

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+		<meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Firefox Start</title>
+    
+    <link href="styles.css" type="text/css" rel="stylesheet" />
+    
+  	<!-- JQuery UI -->
+  	<link href="jquery-ui.css" type="text/css" rel="stylesheet" />
+  	<script src="scripts/jquery.js" type="text/javascript"></script>
+  	<script src="scripts/jquery-ui.min.js" type="text/javascript"></script>
+  
+  	<!-- JQuery ContextMenu Plugin -->
+  	<script src="scripts/jquery.ui-contextmenu.min.js" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+      $(function(){
+        $(window).scroll(function(){ 
+        
+          var a = 48;
+          var pos = $(window).scrollTop();
+          if(pos > a) {
+              $("#search").addClass("stickyHeader");
+          }
+          else {
+              $("#search").removeClass("stickyHeader");
+          }
+        });
+        
+        
+      	$(document).contextmenu({
+      		delegate: ".hasmenu1",
+      		show: false,
+      		hide: false,
+      		autoFocus: true,
+      		preventContextMenuForPopup: true,
+      		preventSelect: true,
+      		menu: "#menu-01",
+      		uiMenuOptions: { // Additional options, used when UI Menu is created
+      			position: { my: "left top", at: "right top-4" }
+      		},
+      		open: function(event, ui) { $(ui.target).parent().parent().toggleClass("selected"); },
+      		close: function(event) { $(".list-item-container").removeClass("selected"); },
+      	});
+      	
+        // 1. Create and register another widget that inherits directly from jquery-ui-contextmenu:
+        $.widget("moogle.contextmenu2", $.moogle.contextmenu, {});
+        // 2. Now we can bind this new widget to the same DOM element without destroying a previous widget.
+        $(document).contextmenu2({
+      		delegate: ".hasmenu2",
+      		show: false,
+      		hide: false,
+      		autoFocus: true,
+      		preventContextMenuForPopup: true,
+      		preventSelect: true,
+      		menu: "#menu-02",
+      		uiMenuOptions: { // Additional options, used when UI Menu is created
+      			position: { my: "left top", at: "right top-4" }
+      		},
+      		open: function(event, ui) { $(ui.target).parent().parent().toggleClass("selected"); },
+      		close: function(event) { $(".list-item-container").removeClass("selected"); },
+      		select: function(event, ui) {
+      			$(ui.target).parent().prev().prev().children(".indicator-status").toggleClass("bookmarked");
+      		}
+        });
+
+        // 1. Create and register another widget that inherits directly from jquery-ui-contextmenu:
+        $.widget("moogle.contextmenu3", $.moogle.contextmenu, {});
+        // 2. Now we can bind this new widget to the same DOM element without destroying a previous widget.
+        $(document).contextmenu3({
+      		delegate: ".hasmenu3",
+      		show: false,
+      		hide: false,
+      		autoFocus: true,
+      		preventContextMenuForPopup: true,
+      		preventSelect: true,
+      		menu: "#menu-03",
+      		uiMenuOptions: { // Additional options, used when UI Menu is created
+      			position: { my: "left top", at: "right top-4" }
+      		},
+      		open: function(event, ui) { $(ui.target).parent().parent().toggleClass("selected"); },
+      		close: function(event) { $(".list-item-container").removeClass("selected"); },
+      		select: function(event, ui) {
+      			$(ui.target).parent().parent().remove();
+      		}
+        });
+      	
+      	$(".triggerPopup").click(function(){ $(document).contextmenu("open", $(this), {foo: "bar"}); });
+      	
+        $(".top-site").children(".tile-close-icon").click(function(){ 
+          $(this).parent().remove();
+          $( ".top-sites-container" ).append( "<div class='top-site'><a class='top-site-item site-addSite' href='#' onclick='this.blur();'><div class='top-site-border'></div><div class='top-site-image'></div><div class='top-site-title'>Add a Site</div></a></div>" );
+        });
+        
+        $(".highlight-box").children(".tile-close-icon").click(function(){ 
+          $(this).parent().remove();
+        });
+
+        $("#section-top-activity-edit").click(function(){
+          $('.list-item-checkbox').prop('checked', false);          
+
+          $(".list-item-container").toggleClass("mode-edit");
+          $(".action-remove-selected").toggleClass("mode-edit");
+
+          if ($("#section-top-activity-edit").text() == "Edit" ) {
+            $("#section-top-activity-edit").text("Cancel");
+          } else {
+            $("#section-top-activity-edit").text("Edit");
+          };
+        });
+
+        $("#section-top-sites-edit").click(function(){ 
+          $(".top-site").toggleClass("mode-edit");
+
+          if ($("#section-top-sites-edit").text() == "Edit" ) {
+            $("#section-top-sites-edit").text("Cancel");
+          } else {
+            $("#section-top-sites-edit").text("Edit");
+          };
+        });
+      	
+        $("#section-highlights-edit").click(function(){ 
+          $(".highlight-box").toggleClass("mode-edit");
+
+          if ($("#section-highlights-edit").text() == "Edit" ) {
+            $("#section-highlights-edit").text("Cancel");
+          } else {
+            $("#section-highlights-edit").text("Edit");
+          };
+        });
+
+        $(".list-item-checkbox").click(function(){ 
+          if ($(".list-item-checkbox").is(':checked')) {
+            $("#section-top-activity-remove").addClass("ready");
+          } else {
+            $("#section-top-activity-remove").removeClass("ready");
+          };
+        });
+        
+        $("#section-top-activity-remove").click(function(){ 
+          $(".list-item-container").has(".list-item-checkbox").has(':checked').remove();
+          $("#section-top-activity-remove").removeClass("ready");
+        });
+
+        $(".snippet-close-icon").click(function(){
+          $("#snippet-bar").addClass("fadeOut");
+          setTimeout(function(){ $("#snippet-bar").remove(); }, 1200);
+        });
+
+      });
+      
+      
+    </script>
+
+  </head>
+  
+  <body>
+
+    <section id="search">
+      
+      <div class="search-widget-container">
+        <input type="text" id="searchField" class="search-combined-field" placeholder="Search" required autofocus="" autocomplete="off" />
+        <button name="searchButton" id="searchButton" class="normal search-combined-button"></button>
+      </div>
+      
+    </section>
+
+
+    <section id="top-sites">
+      <div class="section-padding">
+        <div class="section-header">
+          <h1>Top Sites</h1>
+          <h2 id="section-top-sites-edit">Edit</h2>
+        </div>
+  
+        <div class="top-sites-container">
+          <div class="top-site">
+            <a class="top-site-item site-yahoo hasmenu" href="#" onclick="this.blur();">
+              <div class="top-site-border"></div>
+              <div class="top-site-image"></div>
+              <div class="top-site-title">mail.yahoo.com</div>
+            </a>
+            <div class="tile-close-icon"></div>
+          </div>
+          <div class="top-site">
+            <a class="top-site-item site-kottke" href="#" onclick="this.blur();">
+              <div class="top-site-border"></div>
+              <div class="top-site-image"></div>
+              <div class="top-site-title">Kottke</div>
+            </a>
+            <div class="tile-close-icon"></div>
+          </div>
+          <div class="top-site">
+            <a class="top-site-item site-slate" href="#" onclick="this.blur();">
+              <div class="top-site-border"></div>
+              <div class="top-site-image"></div>
+              <div class="top-site-title">Slate</div>
+            </a>
+            <div class="tile-close-icon"></div>
+          </div>
+          <div class="top-site">
+            <a class="top-site-item site-wikipedia" href="#" onclick="this.blur();">
+              <div class="top-site-border"></div>
+              <div class="top-site-image"></div>
+              <div class="top-site-title">Wikipedia</div>
+            </a>
+            <div class="tile-close-icon"></div>
+          </div>
+  <!--
+          <div class="top-site">
+            <a class="top-site-item site-facebook" href="#" onclick="this.blur();">
+              <div class="top-site-border"></div>
+              <div class="top-site-image"></div>
+              <div class="top-site-title">Facebook</div>
+            </a>
+            <div class="tile-close-icon"></div>
+          </div>
+  -->
+          <div class="top-site">
+            <a class="top-site-item site-generic" href="#" onclick="this.blur();">
+              <div class="top-site-border"></div>
+              <div class="top-site-image">G</div>
+              <div class="top-site-title">Generic Site</div>
+            </a>
+            <div class="tile-close-icon"></div>
+          </div>
+          <div class="top-site">
+            <a class="top-site-item site-addSite" href="#" onclick="this.blur();">
+              <div class="top-site-border"></div>
+              <div class="top-site-image"></div>
+              <div class="top-site-title">Add a Site</div>
+            </a>
+          </div>
+       </div>
+     </div>
+    </section>
+
+    <section id="highlights">
+      <div class="section-padding">
+        <div class="section-header">
+          <h1>Highlights</h1>
+          <h2 id="section-highlights-edit">Edit</h2>
+        </div>
+  
+        <div class="highlights-container">
+          <a class="highlight-box site-theNewYorker" href="#" onclick="this.blur();">
+            <div class="tile-close-icon"></div>
+            <div class="highlight-box-border"></div>
+            <div class="highlight-image">
+              <div class="icon"></div>
+            </div>
+            <div class="highlight-content">
+              <div class="title">A moving cover for the New Yorker</div>
+              <div class="description">Chris Ware, in collaboration with John Kuramoto, Ira Glass,</div>
+              <div class="status">Last Opened on Luke's iPhone 6</div>
+            </div>
+          </a>
+          <a class="highlight-box site-slate" href="#" onclick="this.blur();">
+            <div class="tile-close-icon"></div>
+            <div class="highlight-box-border"></div>
+            <div class="highlight-image">
+              <div class="icon"></div>
+            </div>
+            <div class="highlight-content">
+              <div class="title">Forecasting Awesome Sunsets</div>
+              <div class="description">A team of three Pennsylvania meteorologists is now</div>
+              <div class="status">Last Opened on Luke's iPad 6</div>
+            </div>
+          </a>
+          <a class="highlight-box site-kottke" href="#" onclick="this.blur();">
+            <div class="tile-close-icon"></div>
+            <div class="highlight-box-border"></div>
+            <div class="highlight-image">
+              <div class="icon"></div>
+            </div>
+            <div class="highlight-content">
+              <div class="title">Behind the scenes of The Grand Budapest Hotel</div>
+              <div class="description">"DVD extras" is a phrase that's rapidly receding in the pop</div>
+              <div class="status">Most Recent Bookmark</div>
+            </div>
+          </a>
+       </div>
+     </div>
+    </section>
+
+    <section id="activity-stream">
+      <div class="section-padding">
+        <div class="section-header">
+          <h1>Top Activity</h1>
+          <h2 id="section-top-activity-remove" class="action-remove-selected">Remove Selected Items</h2>
+          <h2 id="section-top-activity-edit">Edit</h2>
+        </div>
+        
+        <div class="list-item-container activity-chunk start">
+          <a class="list-item" href="#" onclick="this.blur();">
+            <div class="indicator-status bookmarked"></div>
+            <div class="identifier-siteImage thumbnail site-medium">
+              <div class="favicon-badge"></div>
+            </div>
+            <div class="content-container">
+              <div class="content-firstLine">
+                <div class="content-title">Learn to Code by Coding <span class="text-grey">—</span> <span class="content-intro-text">“Teach Yourself to program in 10 years.” That’s how Peter Norvig</span></div>
+                <div class="content-timeStamp">12:01 PM</div>
+              </div>
+              <div class="content-secondLine">
+                <div class="content-url">medium.freecodecamp.com/learn-to-code-by-coding-d1e241de81c0#.er837ga4y</div>
+              </div>
+            </div>
+            <div class="content-gutter"></div>
+          </a>
+          <div class="checkboxItem"><input type="checkbox" id="checkbox01" class="list-item-checkbox" /><label for="checkbox01"></label></div>
+          <div class="action-items-container">
+            <div class="action-item icon-delete hasmenu3 triggerPopup"></div>
+            <div class="action-item icon-share  hasmenu2 triggerPopup"></div>
+            <div class="action-item icon-more   hasmenu1 triggerPopup"></div>
+          </div>
+        </div>
+        
+        <div class="list-item-container activity-chunk">
+          <a class="list-item" href="#" onclick="this.blur();">
+            <div class="indicator-status"></div>
+            <div class="identifier-siteImage favicon site-medium"></div>
+            <div class="content-container">
+              <div class="content-firstLine">
+                <div class="content-title">Learn to Code by Coding <span class="text-grey">—</span> <span class="content-intro-text">“Teach Yourself to program in 10 years.” That’s how Peter Norvig</span></div>
+                <div class="content-timeStamp">12:45 PM</div>
+              </div>
+              <div class="content-url">medium.freecodecamp.com/learn-to-code-by-coding-d1e241de81c0#.er837ga4y</div>
+            </div>
+            <div class="content-gutter"></div>
+          </a>
+          <div class="checkboxItem"><input type="checkbox" id="checkbox02" class="list-item-checkbox" /><label for="checkbox02"></label></div>
+          <div class="action-items-container">
+            <div class="action-item icon-delete hasmenu3 triggerPopup"></div>
+            <div class="action-item icon-share  hasmenu2 triggerPopup"></div>
+            <div class="action-item icon-more   hasmenu1 triggerPopup"></div>
+          </div>
+        </div>
+    
+        <div class="list-item-container activity-chunk">
+          <a class="list-item" href="#" onclick="this.blur();">
+            <div class="indicator-status"></div>
+            <div class="identifier-siteImage favicon site-medium"></div>
+            <div class="content-container">
+              <div class="content-firstLine">
+                <div class="content-title">Learn to Code by Coding</div>
+                <div class="content-timeStamp">1:34 PM</div>
+              </div>
+              <div class="content-url">medium.freecodecamp.com/learn-to-code-by-coding-d1e241de81c0#.er837ga4y</div>
+            </div>
+            <div class="content-gutter"></div>
+          </a>
+          <div class="checkboxItem"><input type="checkbox" id="checkbox03" class="list-item-checkbox" /><label for="checkbox03"></label></div>
+          <div class="action-items-container">
+            <div class="action-item icon-delete hasmenu3 triggerPopup"></div>
+            <div class="action-item icon-share  hasmenu2 triggerPopup"></div>
+            <div class="action-item icon-more   hasmenu1 triggerPopup"></div>
+          </div>
+        </div>
+        
+        <div class="list-item-container expand-section activity-chunk end">
+          <a class="list-item" href="#" onclick="this.blur();">
+            <div class="indicator-status"></div>
+    <!--           <div class="identifier-expandCount">5</div> -->
+            <div class="content-container">
+              <div class="content-firstLine">
+    <!--               <div class="content-title">Expand 5 more items related to this activity</div> -->
+                <div class="icon-expand"></div>
+                <div class="content-title">See <strong>5</strong> more items related to this activity</div>
+    <!--               <div>See the rest</div> -->
+              </div>
+            </div>
+          </a>
+        </div>
+        
+        <div class="activity-stream-separator">
+          <div class="activity-stream-separator-line"></div>
+    <!--         <div class="activity-stream-separator-header">Yesterday</div> -->
+          <div class="activity-stream-separator-line"></div>
+        </div>
+    
+        <div class="list-item-container">
+          <a class="list-item" href="#" onclick="this.blur();">
+            <div class="indicator-status"></div>
+            <div class="identifier-siteImage purple">F</div>
+            <div class="content-container">
+              <div class="content-firstLine">
+                <div class="content-title">Learn to Code by Coding</div>
+                <div class="content-timeStamp">2:37 PM</div>
+              </div>
+              <div class="content-url">medium.freecodecamp.com/learn-to-code-by-coding-d1e241de81c0#.er837ga4y</div>
+            </div>
+            <div class="content-gutter"></div>
+          </a>
+          <div class="checkboxItem"><input type="checkbox" id="checkbox04" class="list-item-checkbox" /><label for="checkbox04"></label></div>
+          <div class="action-items-container">
+            <div class="action-item icon-delete hasmenu3 triggerPopup"></div>
+            <div class="action-item icon-share  hasmenu2 triggerPopup"></div>
+            <div class="action-item icon-more   hasmenu1 triggerPopup"></div>
+          </div>
+        </div>
+    
+        <div class="list-item-container">
+          <a class="list-item" href="#" onclick="this.blur();">
+            <div class="indicator-status"></div>
+            <div class="identifier-siteImage purple">f</div>
+            <div class="content-container">
+              <div class="content-firstLine">
+                <div class="content-title">medium.freecodecamp.com</div>
+                <div class="content-timeStamp">4:51 PM</div>
+              </div>
+              <div class="content-url">medium.freecodecamp.com/learn-to-code-by-coding-d1e241de81c0#.er837ga4y</div>
+            </div>
+            <div class="content-gutter"></div>
+          </a>
+          <div class="checkboxItem"><input type="checkbox" id="checkbox05" class="list-item-checkbox" /><label for="checkbox05"></label></div>
+          <div class="action-items-container">
+            <div class="action-item icon-delete hasmenu3 triggerPopup"></div>
+            <div class="action-item icon-share  hasmenu2 triggerPopup"></div>
+            <div class="action-item icon-more   hasmenu1 triggerPopup"></div>
+          </div>
+        </div>
+        
+        <div class="activity-stream-separator">
+          <div class="activity-stream-separator-line"></div>
+    <!--         <div class="activity-stream-separator-header">Yesterday</div> -->
+          <div class="activity-stream-separator-line"></div>
+        </div>
+    
+        <div class="list-item-container activity-chunk start">
+          <a class="list-item" href="#" onclick="this.blur();">
+            <div class="indicator-status search"></div>
+            <div class="identifier-siteImage site-yahoo"></div>
+            <div class="content-container">
+              <div class="content-firstLine">
+                <div class="content-title">Taco Recipes</div>
+                <div class="content-timeStamp">2/18/16 <span class="timeStamp-separator">@</span> 2:37 PM</div>
+              </div>
+              <div class="content-url">https://search.yahoo.com/yhs/search?p=taco+recipes&ei=UTF-8&hspart=mozilla&hsimp=yhs-001</div>
+            </div>
+            <div class="content-gutter"></div>
+          </a>
+          <div class="checkboxItem"><input type="checkbox" id="checkbox06" class="list-item-checkbox" /><label for="checkbox06"></label></div>
+          <div class="action-items-container">
+            <div class="action-item icon-delete hasmenu3 triggerPopup"></div>
+            <div class="action-item icon-share  hasmenu2 triggerPopup"></div>
+            <div class="action-item icon-more   hasmenu1 triggerPopup"></div>
+          </div>
+        </div>
+    
+        <div class="list-item-container activity-chunk">
+          <a class="list-item" href="#" onclick="this.blur();">
+            <div class="indicator-status"></div>
+            <div class="identifier-siteImage brown">T</div>
+            <div class="content-container">
+              <div class="content-firstLine">
+                <div class="content-title">The Best Tacos on Earth!</div>
+                <div class="content-timeStamp">2/18/16 <span class="timeStamp-separator">@</span> 2:38 PM</div>
+              </div>
+              <div class="content-url">www.thebesttacos.com</div>
+            </div>
+            <div class="content-gutter"></div>
+          </a>
+          <div class="checkboxItem"><input type="checkbox" id="checkbox07" class="list-item-checkbox" /><label for="checkbox07"></label></div>
+          <div class="action-items-container">
+            <div class="action-item icon-delete hasmenu3 triggerPopup"></div>
+            <div class="action-item icon-share  hasmenu2 triggerPopup"></div>
+            <div class="action-item icon-more   hasmenu1 triggerPopup"></div>
+          </div>
+        </div>
+        
+        <div class="list-item-container activity-chunk">
+          <a class="list-item" href="#" onclick="this.blur();">
+            <div class="indicator-status"></div>
+            <div class="identifier-siteImage orange">F</div>
+            <div class="content-container">
+              <div class="content-firstLine">
+                <div class="content-title">Taco Trucks in Louisville, KY</div>
+                <div class="content-timeStamp">2/19/16 <span class="timeStamp-separator">@</span> 11:38 AM</div>
+              </div>
+              <div class="content-url">www.foodtruckfinder.io</div>
+            </div>
+            <div class="content-gutter"></div>
+          </a>
+          <div class="checkboxItem"><input type="checkbox" id="checkbox08" class="list-item-checkbox" /><label for="checkbox08"></label></div>
+          <div class="action-items-container">
+            <div class="action-item icon-delete hasmenu3 triggerPopup"></div>
+            <div class="action-item icon-share  hasmenu2 triggerPopup"></div>
+            <div class="action-item icon-more   hasmenu1 triggerPopup"></div>
+          </div>
+        </div>
+        
+        <div class="list-item-container expand-section activity-chunk end">
+          <a class="list-item" href="#" onclick="this.blur();">
+            <div class="indicator-status"></div>
+            <div class="content-container">
+              <div class="content-firstLine">
+                <div class="icon-expand"></div>
+                <div class="content-title">See <strong>10</strong> more items related to this search</div>
+              </div>
+            </div>
+          </a>
+        </div>
+    
+        <div class="activity-stream-separator">
+          <div class="activity-stream-separator-line"></div>
+    <!--         <div class="activity-stream-separator-header">Yesterday</div> -->
+          <div class="activity-stream-separator-line"></div>
+        </div>
+    
+        <div class="list-item-container">
+          <a class="list-item" href="#" onclick="this.blur();">
+            <div class="indicator-status"></div>
+            <div class="identifier-siteImage orange">F</div>
+            <div class="content-container">
+              <div class="content-firstLine">
+                <div class="content-title">Taco Trucks in Louisville, KY</div>
+                <div class="content-timeStamp">2/19/16 <span class="timeStamp-separator">@</span> 11:38 AM</div>
+              </div>
+              <div class="content-url">www.foodtruckfinder.io</div>
+            </div>
+            <div class="content-gutter"></div>
+          </a>
+          <div class="checkboxItem"><input type="checkbox" id="checkbox09" class="list-item-checkbox" /><label for="checkbox09"></label></div>
+          <div class="action-items-container">
+            <div class="action-item icon-delete hasmenu3 triggerPopup"></div>
+            <div class="action-item icon-share  hasmenu2 triggerPopup"></div>
+            <div class="action-item icon-more   hasmenu1 triggerPopup"></div>
+          </div>
+        </div>
+    
+        <div class="list-item-container">
+          <a class="list-item" href="#" onclick="this.blur();">
+            <div class="indicator-status"></div>
+            <div class="identifier-siteImage orange">F</div>
+            <div class="content-container">
+              <div class="content-firstLine">
+                <div class="content-title">Taco Trucks in Louisville, KY</div>
+                <div class="content-timeStamp">2/19/16 <span class="timeStamp-separator">@</span> 11:38 AM</div>
+              </div>
+              <div class="content-url">www.foodtruckfinder.io</div>
+            </div>
+            <div class="content-gutter"></div>
+          </a>
+          <div class="checkboxItem"><input type="checkbox" id="checkbox10" class="list-item-checkbox" /><label for="checkbox10"></label></div>
+          <div class="action-items-container">
+            <div class="action-item icon-delete hasmenu3 triggerPopup"></div>
+            <div class="action-item icon-share  hasmenu2 triggerPopup"></div>
+            <div class="action-item icon-more   hasmenu1 triggerPopup"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="footer"></section>
+
+    <section id="snippet-bar">
+      <div class="snippet-container">
+        <div class="snippet-icon"></div>
+        <div class="snippet-text">Thanks for choosing Firefox! To get the most out of your browser, <a href="#">learn more about the latest features</a>.</div>
+      </div>
+      <div class="snippet-close-icon"></div>
+    </section>
+
+    <!-- Menus //-->
+  	<ul id="menu-01" style="display: none;">
+  		<li></div><div class="menu-item-text">Open in New Window</div></li>
+  		<li></div><div class="menu-item-text">Open in Private Window</div></li>
+  		<li>----</li>
+  		<li><div class="menu-item-text">Find Related Content</div></li>
+  	</ul>
+  	
+  	<ul id="menu-02" style="display: none;">
+  		<li><div class="ui-icon ui-icon-copy"></div><div class="menu-item-text">Copy Address</div></li>
+  		<li><div class="ui-icon ui-icon-bookmark"></div><div class="menu-item-text">Add to Bookmarks</div></li>
+  		<li><div class="ui-icon ui-icon-mail"></div><div class="menu-item-text">Email This Page…</div></li>
+  		<li><div class="ui-icon ui-icon-more"></div><div class="menu-item-text">More</div>
+  			<ul class="subMenu">
+  				<li>Share And Stuff</li>
+  				<li>Even More Sharing!</li>
+  			</ul>
+  		</li>
+  		<li>----</li>
+  		<li><div class="menu-item-text">Send to Device</div>
+  			<ul class="subMenu">
+  				<li>Luke's iPad 6</li>
+  				<li>Android Phone</li>
+  				<li>Luke's iPhone 5ez2HD++</li>
+  			</ul>
+  		</li>
+  	</ul>
+
+  	<ul id="menu-03" style="display: none;">
+  		<li><div data-command="remove()" class="menu-item-text">Remove from Activity Stream</div></li>
+  		<li><div class="menu-item-text">Block Site from Activity Stream</div></li>
+  	</ul>
+
+  </body>
+</html>
+  

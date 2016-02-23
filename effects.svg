@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+  <filter id="icon-color-overlay">
+    <feColorMatrix in="SourceGraphic"
+      type="matrix"
+      values=".5 0 0 .5 0 
+              .5 0 0 .5 0  
+              .5 0 0 .5 0 
+               0 0 0  1 0" />
+  </filter>
+
+  <filter id="icon-color-overlay-purple">
+    <feColorMatrix in="SourceGraphic"
+      type="matrix"
+      values=".26 0 0 .74 0 
+              .28 0 0 .72 0  
+              .2  0 0 .8  0 
+               0  0 0  1  0" />
+  </filter>
+
+  <filter id="icon-color-overlay-magenta">
+    <feColorMatrix in="SourceGraphic"
+      type="matrix"
+      values="0 0 0 1 1 
+              1 0 0 0 0  
+              0 0 0 1 1 
+              0 0 0 1 0" />
+  </filter>
+
+  <filter id="icon-color-overlay-blue">
+    <feColorMatrix in="SourceGraphic"
+      type="matrix"
+      values=".82 0 0 .18 0 
+              .31 0 0 .69 0  
+              .39 0 0 .61 0 
+               0  0 0  1  0" />
+  </filter>
+
+  <filter id="icon-color-overlay-invert">
+    <feColorMatrix in="SourceGraphic"
+      type="matrix"
+      values="0 0 0 1 1 
+              0 0 0 1 1  
+              0 0 0 1 1 
+              0 0 0 1 0" />
+  </filter>
+
+</svg>
