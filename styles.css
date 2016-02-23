@@ -788,6 +788,17 @@ h2 {
   overflow: hidden;
 }
 
+.text-actionText {
+  color: #00beae;
+  font-size: 12px;
+  opacity: 0;  
+}
+
+.list-item-container:hover .text-actionText {
+  opacity: 1;  
+}
+
+
 .list-item-container.expand-section .content-container {
   flex-grow: 0;
   justify-content: center;
@@ -815,7 +826,7 @@ h2 {
 
 
 .text-grey {
-  color: var(--color-grey-disabled);
+  color: var(--color-grey);
   font-size: 12px;
 }
 
