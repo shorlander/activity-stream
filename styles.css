@@ -713,7 +713,7 @@ h2 {
   background-repeat: no-repeat;
   border-radius: var(--border-radius-outer);
   color: white;
-  font-size: 24px;
+  font-size: 16px;
 }
 
 .identifier-siteImage.purple {
@@ -730,7 +730,7 @@ h2 {
 
 
 .identifier-siteImage.favicon {
-  background-image: url("images/favicon-medium-16.png");
+  background-image: url("images/favicon-identifier-siteImage-16.png");
 }
 
 .identifier-siteImage.thumbnail {
@@ -743,9 +743,15 @@ h2 {
   background-color: #a8dbc0;
 }
 
+.list-item .favicon {
+  background-size: 16px;} 
+
 .identifier-siteImage.site-yahoo {
   background-image: url("images/favicon-mask-yahoo-inverted.svg");
-  background-size: 16px;
+}
+.identifier-siteImage.site-facebook {
+  background-color: #8497c7;
+  background-image: url("images/favicon-facebook-16.png");
 }
 
 .favicon-badge {
@@ -772,7 +778,6 @@ h2 {
   background-color: #a8dbc0;
   background-image: url("images/favicon-medium-16.png");
 }
-
 .identifier-expandCount {
   position: relative;
   display: flex;
