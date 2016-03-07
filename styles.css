@@ -746,13 +746,17 @@ h2 {
 .list-item .favicon {
   background-size: 16px;} 
 
-.identifier-siteImage.site-yahoo {
-  background-image: url("images/favicon-mask-yahoo-inverted.svg");
-}
-.identifier-siteImage.site-facebook {
-  background-color: #8497c7;
-  background-image: url("images/favicon-facebook-16.png");
-}
+		.identifier-siteImage.site-yahoo {
+			background-image: url("images/favicon-mask-yahoo-inverted.svg");
+		}
+		.identifier-siteImage.site-facebook {
+			background-color: #8497c7;
+			background-image: url("images/favicon-facebook-16.png");
+		}
+		.identifier-siteImage.site-npm {
+			background-color: #e06a6a;
+			background-image: url("images/favicon-npm-16.png");
+		}
 
 .favicon-badge {
   position: absolute;
