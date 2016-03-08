@@ -608,6 +608,9 @@ h2 {
   background-color: var(--color-panel-active-background);
   border: 1px solid var(--color-panel-border);
 }
+.list-item-container:hover.expand-section .content-container {
+  background-color: #DDD;
+}
 
 .list-item-container .action-items-container {
   position: absolute;
@@ -729,18 +732,26 @@ h2 {
 }
 
 
-.identifier-siteImage.favicon {
-  background-image: url("images/favicon-identifier-siteImage-16.png");
-}
+/* Thumbnails------------------------------------------------- */
+
 
 .identifier-siteImage.thumbnail {
-  background-image: url("images/thumbnail-medium.jpg");
   background-size: cover;
   background-position: center center;
 }
 
 .identifier-siteImage.site-medium {
-  background-color: #a8dbc0;
+  background-image: url("images/thumbnail-medium.jpg");
+}
+.identifier-siteImage.site-foodtruck {
+  background-image: url("images/thumbnail-foodtruck.jpg");
+}
+
+
+/* Favicons------------------------------------------------- */
+
+.identifier-siteImage.favicon {
+  background-image: url("images/favicon-identifier-siteImage-16.png");
 }
 
 .list-item .favicon {
@@ -756,6 +767,10 @@ h2 {
 		.identifier-siteImage.site-npm {
 			background-color: #e06a6a;
 			background-image: url("images/favicon-npm-16.png");
+		}
+		.identifier-siteImage.site-yahoo {
+			background-color: #400090;
+			background-image: url("images/favicon-mask-yahoo-inverted.svg");
 		}
 
 .favicon-badge {
@@ -778,10 +793,18 @@ h2 {
 */
 }
 
-.identifier-siteImage.site-medium .favicon-badge {
-  background-color: #a8dbc0;
-  background-image: url("images/favicon-medium-16.png");
-}
+		.identifier-siteImage.site-medium .favicon-badge {
+			background-color: #a8dbc0;
+			background-image: url("images/favicon-medium-16.png");
+		}
+		.identifier-siteImage.site-foodtruck .favicon-badge {
+			background-color: #00aeef;
+			background-image: url("images/favicon-foodtruck-64.png");
+		}
+
+
+
+
 .identifier-expandCount {
   position: relative;
   display: flex;
@@ -796,6 +819,13 @@ h2 {
   font-size: 16px;
   font-weight: bold;
 }
+.list-item-container:hover .identifier-expandCount {
+  background-color: #FFF;
+}
+
+
+
+
 
 
 .content-container {
