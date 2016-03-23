@@ -1,0 +1,163 @@
+
+/* Generic Site ------------------------------------------------------- */
+.top-site-item.site-generic,
+.top-site-item.site-generic:hover:active {
+  color: #fff;
+  background-color: #f58e5e;
+}
+
+
+/* Dribbble ------------------------------------------------------- */
+.top-site-item.site-dribbble {
+  color: #fff;
+  background-color: #781848;
+}
+.top-site-item.site-dribbble > .top-site-image {
+  background-image: url("images/favicon-dribbble-32.png");
+}
+.highlight-box.site-dribbble > .highlight-image {
+  background-image: url("images/thumbnail-dribbble.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+.highlight-box.site-dribbble > .highlight-image > .icon {
+  background-image: url("images/favicon-dribbble-32.png");
+}
+
+
+ 
+/* Kottke ------------------------------------------------------- */
+.top-site-item.site-kottke {
+  color: #fff;
+  background-color: #90f0ff;
+}
+.top-site-item.site-kottke > .top-site-image {
+  background-image: url("images/apple-touch-icon-kottke.png");
+}
+.highlight-box.site-kottke > .highlight-image {
+  background-image: url("images/thumbnail-kottke.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+.highlight-box.site-kottke > .highlight-image > .icon {
+  background-image: url("images/apple-touch-icon-kottke.png");
+}
+
+
+/* Facebook -------------------------------------------------------*/
+.top-site-item.site-facebook {
+  color: #fff;
+  background-color: #4860a8;
+}
+.top-site-item.site-facebook > .top-site-image {
+  background-image: url("images/favicon-mask-facebook.svg");
+  filter: url("effects.svg#icon-color-overlay-invert");
+}
+
+.identifier-siteImage.site-facebook {
+	background-color: #8497c7;
+	background-image: url("images/favicon-facebook-16.png");
+}
+
+
+/* foodtruck ------------------------------------------------------- */
+.identifier-siteImage.site-foodtruck {
+  background-image: url("images/thumbnail-foodtruck.jpg");
+}		
+.identifier-siteImage.site-foodtruck .favicon-badge {
+	background-color: #00aeef;
+	background-image: url("images/favicon-foodtruck-64.png");
+}
+
+
+/* NPM ------------------------------------------------------- */
+.identifier-siteImage.site-npm {
+	background-color: #e06a6a;
+	background-image: url("images/favicon-npm-16.png");
+}
+
+
+/* Medium ------------------------------------------------------- */
+.identifier-siteImage.site-medium {
+  background-image: url("images/thumbnail-medium.jpg");
+}
+.identifier-siteImage.site-medium .favicon-badge {
+	background-color: #a8dbc0;
+	background-image: url("images/favicon-medium-16.png");
+}
+
+
+/* New Yorker --------------------------------------------------- */
+.highlight-box.site-theNewYorker > .highlight-image {
+  background-image: url("images/thumbnail-theNewYorker.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+.highlight-box.site-theNewYorker > .highlight-image > .icon {
+  background-image: url("images/apple-touch-icon-theNewYorker.png");
+}
+
+
+/* Slate ------------------------------------------------------- */
+.top-site-item.site-slate {
+  color: #fff;
+  background-color: #781848;
+}
+.top-site-item.site-slate > .top-site-image {
+  background-image: url("images/facebook-icon-slate.png");
+}
+.highlight-box.site-slate > .highlight-image {
+  background-image: url("images/thumbnail-slate.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+.highlight-box.site-slate > .highlight-image > .icon {
+  background-image: url("images/facebook-icon-slate.png");
+}
+
+
+/* Wikipedia -------------------------------------------------------*/
+.top-site-item.site-wikipedia {
+  color: #fff;
+  background-color: #fff;
+}
+.top-site-item.site-wikipedia > .top-site-image {
+  background-image: url("images/favicon-wikipedia-16.png");
+}
+
+
+/* Yahoo ------------------------------------------------------- */
+.site-yahoo {
+	color: #fff;
+	background-color: #400090;
+}
+.top-site-item.site-yahoo {
+	color: #fff;
+	background-color: #400090;
+}
+.top-site-item.site-yahoo > .top-site-image {
+	background-image: url("images/favicon-mask-yahoo.svg");
+	filter: url("effects.svg#icon-color-overlay-invert");
+}
+
+.identifier-siteImage.site-yahoo {
+	background-image: url("images/favicon-mask-yahoo-inverted.svg");
+}
+	
+.identifier-siteImage.site-yahoo {
+	background-color: #400090;
+	background-image: url("images/favicon-mask-yahoo-inverted.svg");
+}
+
+
+
+
+
+	
+		
+		
+		
+
+
+
+
