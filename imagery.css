@@ -8,9 +8,12 @@
 
 
 /* Dribbble ------------------------------------------------------- */
+:root {
+  --dribbble-bg: #333;
+}
 .top-site-item.site-dribbble {
   color: #fff;
-  background-color: #781848;
+  background-color:var(--dribbble-bg);
 }
 .top-site-item.site-dribbble > .top-site-image {
   background-image: url("images/favicon-dribbble-32.png");
@@ -22,14 +25,18 @@
 }
 .highlight-box.site-dribbble > .highlight-image > .icon {
   background-image: url("images/favicon-dribbble-32.png");
+  background-color:var(--dribbble-bg);
 }
 
 
  
 /* Kottke ------------------------------------------------------- */
+:root {
+  --kottke-bg: #90f0ff;
+}
 .top-site-item.site-kottke {
   color: #fff;
-  background-color: #90f0ff;
+  background-color: var(--kottke-bg);
 }
 .top-site-item.site-kottke > .top-site-image {
   background-image: url("images/apple-touch-icon-kottke.png");
@@ -41,6 +48,7 @@
 }
 .highlight-box.site-kottke > .highlight-image > .icon {
   background-image: url("images/apple-touch-icon-kottke.png");
+  background-color: var(--kottke-bg);
 }
 
 
@@ -88,6 +96,9 @@
 
 
 /* New Yorker --------------------------------------------------- */
+:root {
+  --NewYoker-bg: #FFF;
+}
 .highlight-box.site-theNewYorker > .highlight-image {
   background-image: url("images/thumbnail-theNewYorker.jpg");
   background-size: cover;
@@ -95,6 +106,7 @@
 }
 .highlight-box.site-theNewYorker > .highlight-image > .icon {
   background-image: url("images/apple-touch-icon-theNewYorker.png");
+  background-color: var(--NewYoker-bg);
 }
 
 
